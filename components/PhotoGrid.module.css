@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eee;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
