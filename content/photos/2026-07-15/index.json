@@ -1,4 +1,47 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": []
+  "dayTitle": "Lost the Demurrer but still look fly!",
+  "photos": [
+    {
+      "file": "office-window-portrait-1.jpg",
+      "title": "Suited Up With a City View",
+      "caption": "A portrait by the office window before heading out, city rooftops stretching out below.",
+      "alt": "Man in a tan suit and checked shirt smiling in front of a floor-to-ceiling office window overlooking a city street.",
+      "tags": ["portrait"]
+    },
+    {
+      "file": "office-window-portrait-2.jpg",
+      "title": "Another Angle by the Window",
+      "caption": "A second shot from the same office window, catching the skyline from a different angle.",
+      "alt": "Man in a tan suit posing near a large office window with a city skyline visible outside.",
+      "tags": ["portrait"]
+    },
+    {
+      "file": "waterfront-promenade-portrait-1.jpg",
+      "title": "Walking It Off by the Water",
+      "caption": "After a long day, a relaxed moment on the waterfront promenade.",
+      "alt": "Man in a tan suit and red-and-white sneakers standing on a paved waterfront path with trees and water in the background.",
+      "tags": ["portrait"]
+    },
+    {
+      "file": "waterfront-promenade-portrait-2.jpg",
+      "title": "Another Look at the Waterfront",
+      "caption": "A second angle from the same waterfront walk, tie and all.",
+      "alt": "Man in a tan suit with a tie standing on a waterfront promenade, hands in pockets, smiling.",
+      "tags": ["portrait"]
+    },
+    {
+      "file": "waterfront-promenade-closeup.jpg",
+      "title": "All Smiles by the River",
+      "caption": "A candid, close-up smile from the same riverside stop.",
+      "alt": "Close-up portrait of a man in a tan suit smiling outdoors with trees and water behind him.",
+      "tags": ["portrait"]
+    },
+    {
+      "file": "lobby-briefcase-portrait.png",
+      "title": "Heading Out With Briefcase in Hand",
+      "caption": "Making an exit through a glass-walled lobby, briefcase in hand — the day's business concluded.",
+      "alt": "Man in a tan suit carrying a black briefcase, walking through a modern building lobby with escalators and glass walls.",
+      "tags": ["portrait"]
+    }
+  ]
 }
