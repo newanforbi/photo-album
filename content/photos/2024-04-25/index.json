@@ -1,5 +1,12 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": [],
-  "videos": []
+  "dayTitle": "New Portrait",
+  "photos": [
+    {
+      "file": "portrait-plaid-flannel.jpg",
+      "title": "Portrait in Plaid",
+      "caption": "A casual portrait in a plaid flannel shirt.",
+      "alt": "Close-up portrait of a bald man with a beard wearing a plaid flannel shirt, smiling slightly against a plain wall.",
+      "tags": ["portrait"]
+    }
+  ]
 }

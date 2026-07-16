@@ -1,5 +1,12 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": [],
-  "videos": []
+  "dayTitle": "Speech Practice Session",
+  "photos": [
+    {
+      "file": "suit-and-tie-speech-practice.jpg",
+      "title": "Suited Up for Speech Practice",
+      "caption": "Getting ready for a speech practice session, suit and tie on.",
+      "alt": "Young man in a suit and tie sitting in a chair during an indoor speech practice session.",
+      "tags": ["speech", "portrait"]
+    }
+  ]
 }

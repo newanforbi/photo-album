@@ -1,5 +1,12 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": [],
-  "videos": []
+  "dayTitle": "School ID",
+  "photos": [
+    {
+      "file": "james-lick-high-school-id-card.jpg",
+      "title": "James Lick High School Student ID",
+      "caption": "My James Lick High School student ID card for the 2013–2014 school year.",
+      "alt": "James Lick High School student ID card printed with the name Brendan Ngwa Nforbi, 2013-2014 school year.",
+      "tags": ["school", "id card"]
+    }
+  ]
 }

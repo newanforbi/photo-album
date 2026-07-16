@@ -1,5 +1,19 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": [],
-  "videos": []
+  "dayTitle": "Track Cover Pic",
+  "photos": [
+    {
+      "file": "car-selfie-track-cover.jpg",
+      "title": "Car Selfie for a Track Cover",
+      "caption": "A quick car selfie that ended up as a cover photo.",
+      "alt": "Close-up selfie of a man in a car wearing a purple top.",
+      "tags": ["selfie"]
+    },
+    {
+      "file": "office-selfie-tan-jacket.jpg",
+      "title": "Office Selfie",
+      "caption": "A selfie taken in an office or classroom setting.",
+      "alt": "Man in a tan jacket over a black t-shirt taking a selfie indoors, blinds and a periodic table poster visible in the background.",
+      "tags": ["selfie"]
+    }
+  ]
 }

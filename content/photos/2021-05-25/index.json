@@ -1,5 +1,19 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": [],
-  "videos": []
+  "dayTitle": "Graduation Season",
+  "photos": [
+    {
+      "file": "closeup-selfie-earbuds.jpg",
+      "title": "Close-Up Selfie",
+      "caption": "A close-up selfie with wired earbuds in.",
+      "alt": "Close-up selfie of a bald man wearing a black t-shirt and wired earbuds against a plain wall.",
+      "tags": ["selfie"]
+    },
+    {
+      "file": "family-graduation-celebration.jpg",
+      "title": "Family Graduation Celebration",
+      "caption": "A family celebration for a 2021 high school graduation, complete with \"Congrats Grad\" balloons.",
+      "alt": "A family posing together outdoors celebrating a 2021 graduation, with a graduate in cap and gown and balloons reading Congrats Grad.",
+      "tags": ["family", "graduation"]
+    }
+  ]
 }
