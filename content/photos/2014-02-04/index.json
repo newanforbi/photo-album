@@ -1,5 +1,40 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": [],
-  "videos": []
+  "dayTitle": "James Lick Soccer Media Day",
+  "photos": [
+    {
+      "file": "soccer-team-backstage.jpg",
+      "title": "James Lick Soccer Team Backstage",
+      "caption": "Team moment backstage during James Lick High School's Cal-Hi Sports soccer media day.",
+      "alt": "Group of James Lick High School soccer players in gray team shirts backstage during a Cal-Hi Sports TV segment.",
+      "tags": ["soccer", "high school", "media day"]
+    },
+    {
+      "file": "soccer-media-day-interview-1.jpg",
+      "title": "Behind the Scenes at Media Day",
+      "caption": "Behind the scenes as a teammate is interviewed for Cal-Hi Sports Bay Area.",
+      "alt": "James Lick High School soccer players gathered near a Cal-Hi Sports TV microphone during a media day interview.",
+      "tags": ["soccer", "high school", "media day"]
+    },
+    {
+      "file": "soccer-media-day-interview-2.jpg",
+      "title": "Cal-Hi Sports Interview Segment",
+      "caption": "A teammate's on-camera interview for Cal-Hi Sports Bay Area's coverage of James Lick soccer.",
+      "alt": "Cal-Hi Sports Bay Area TV interview segment with James Lick High School soccer players in the background.",
+      "tags": ["soccer", "high school", "media day"]
+    },
+    {
+      "file": "soccer-media-day-interview-3.jpg",
+      "title": "Humberto Solis Interview",
+      "caption": "Goalkeeper Humberto Solis being interviewed for Cal-Hi Sports Bay Area, teammates looking on.",
+      "alt": "Cal-Hi Sports TV lower-third graphic naming Humberto Solis, James Lick High School senior goalkeeper, with teammates in the background.",
+      "tags": ["soccer", "high school", "media day"]
+    },
+    {
+      "file": "soccer-team-shirt-closeup.jpg",
+      "title": "James Lick Soccer Shirt Close-Up",
+      "caption": "A closer look at the James Lick Soccer team shirt during the Cal-Hi Sports media day segment.",
+      "alt": "James Lick High School Soccer team shirt in the foreground with teammates visible behind during a Cal-Hi Sports TV interview.",
+      "tags": ["soccer", "high school", "media day"]
+    }
+  ]
 }

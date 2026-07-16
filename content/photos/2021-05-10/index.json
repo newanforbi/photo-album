@@ -1,5 +1,12 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": [],
-  "videos": []
+  "dayTitle": "Caro",
+  "photos": [
+    {
+      "file": "mustang-gt-wash-day.jpg",
+      "title": "Wash Day for the Mustang GT",
+      "caption": "A freshly washed Mustang GT convertible parked out front.",
+      "alt": "Gray Ford Mustang GT convertible parked on a residential street, wet from a recent wash.",
+      "tags": ["car"]
+    }
+  ]
 }
