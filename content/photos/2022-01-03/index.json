@@ -1,5 +1,12 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": [],
-  "videos": []
+  "dayTitle": "CDL in Barely 2 Weeks",
+  "photos": [
+    {
+      "file": "cdl-training-with-instructor.jpg",
+      "title": "Getting My Class A CDL",
+      "caption": "With my instructor after completing Class A CDL training in just two weeks.",
+      "alt": "Two men standing in front of a semi-truck trailer, one holding a white t-shirt for a CDL training school, the other wearing a matching shirt and cap labeled Instructor.",
+      "tags": ["cdl", "milestone"]
+    }
+  ]
 }
