@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/`, changeFrequency: "daily", priority: 1 },
     { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/album`, changeFrequency: "daily", priority: 0.9 },
+    { url: `${SITE_URL}/copyright`, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const dayEntries: MetadataRoute.Sitemap = dates.map((date) => ({
