@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
-import { getAllDates, getAllPhotosFlat, getDayData } from "@/lib/photos";
+import { getAllDates, getAllPhotosFlat, getAllVideosFlat, getDayData } from "@/lib/photos";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const dates = getAllDates();
   const photos = getAllPhotosFlat();
+  const videos = getAllVideosFlat();
 
   const staticEntries: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, changeFrequency: "daily", priority: 1 },
@@ -26,5 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticEntries, ...dayEntries, ...photoEntries];
+  const videoEntries: MetadataRoute.Sitemap = videos.map((video) => ({
+    url: `${SITE_URL}/video/${video.date}/${video.slug}`,
+    lastModified: `${video.date}T00:00:00.000Z`,
+    changeFrequency: "yearly",
+    priority: 0.8,
+  }));
+
+  return [...staticEntries, ...dayEntries, ...photoEntries, ...videoEntries];
 }

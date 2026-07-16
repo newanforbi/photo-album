@@ -23,15 +23,31 @@ export interface Photo extends RawPhoto {
   height: number;
 }
 
+export interface RawVideo {
+  youtubeId: string;
+  title: string;
+  description: string;
+  tags?: string[];
+}
+
+export interface Video extends RawVideo {
+  date: string;
+  slug: string;
+  watchUrl: string;
+  thumbnailUrl: string;
+}
+
 export interface Day {
   date: string;
   dayTitle: string;
   photos: Photo[];
+  videos: Video[];
 }
 
 interface DayFile {
   dayTitle: string;
-  photos: RawPhoto[];
+  photos?: RawPhoto[];
+  videos?: RawVideo[];
 }
 
 let cache: Day[] | null = null;
@@ -63,9 +79,11 @@ function loadAllDays(): Day[] {
       continue;
     }
 
-    if (!parsed.photos || parsed.photos.length === 0) continue;
+    const rawPhotos = parsed.photos ?? [];
+    const rawVideos = parsed.videos ?? [];
+    if (rawPhotos.length === 0 && rawVideos.length === 0) continue;
 
-    const photos: Photo[] = parsed.photos.map((raw) => {
+    const photos: Photo[] = rawPhotos.map((raw) => {
       const imgPath = path.join(PUBLIC_DIR, date, raw.file);
       let width = 0;
       let height = 0;
@@ -84,7 +102,15 @@ function loadAllDays(): Day[] {
       };
     });
 
-    days.push({ date, dayTitle: parsed.dayTitle, photos });
+    const videos: Video[] = rawVideos.map((raw) => ({
+      ...raw,
+      date,
+      slug: slugify(raw.title),
+      watchUrl: `https://www.youtube.com/watch?v=${raw.youtubeId}`,
+      thumbnailUrl: `https://i.ytimg.com/vi/${raw.youtubeId}/hqdefault.jpg`,
+    }));
+
+    days.push({ date, dayTitle: parsed.dayTitle, photos, videos });
   }
 
   // Newest first.
@@ -128,6 +154,27 @@ export function getAdjacentPhoto(
 ): { prev: Photo | null; next: Photo | null } {
   const flat = getAllPhotosFlat(); // newest day first, in-day order preserved
   const index = flat.findIndex((p) => p.date === date && p.slug === slug);
+  if (index === -1) return { prev: null, next: null };
+  return {
+    prev: index < flat.length - 1 ? flat[index + 1] : null,
+    next: index > 0 ? flat[index - 1] : null,
+  };
+}
+
+export function getAllVideosFlat(): Video[] {
+  return loadAllDays().flatMap((day) => day.videos);
+}
+
+export function getVideoBySlug(date: string, slug: string): Video | undefined {
+  return getDayData(date)?.videos.find((video) => video.slug === slug);
+}
+
+export function getAdjacentVideo(
+  date: string,
+  slug: string
+): { prev: Video | null; next: Video | null } {
+  const flat = getAllVideosFlat(); // newest day first, in-day order preserved
+  const index = flat.findIndex((v) => v.date === date && v.slug === slug);
   if (index === -1) return { prev: null, next: null };
   return {
     prev: index < flat.length - 1 ? flat[index + 1] : null,

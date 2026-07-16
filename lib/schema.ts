@@ -8,7 +8,7 @@ import {
   SITE_URL,
   WEBSITE_ID,
 } from "./site";
-import type { Photo } from "./photos";
+import type { Photo, Video } from "./photos";
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -65,6 +65,26 @@ export function imageObjectNode(photo: Photo): JsonLdNode {
   };
 }
 
+export function videoObjectNode(video: Video): JsonLdNode {
+  const url = `${SITE_URL}/video/${video.date}/${video.slug}`;
+  return {
+    "@type": "VideoObject",
+    "@id": `${url}#video`,
+    url,
+    name: video.title,
+    description: video.description,
+    thumbnailUrl: [video.thumbnailUrl],
+    uploadDate: `${video.date}T00:00:00.000Z`,
+    contentUrl: video.watchUrl,
+    embedUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
+    // Not `creator`: these videos come from other sources, not shot by
+    // PERSON_ID — `actor`/`about` correctly describe them as the subject.
+    actor: { "@id": PERSON_ID },
+    about: { "@id": PERSON_ID },
+    ...(video.tags && video.tags.length > 0 ? { keywords: video.tags.join(", ") } : {}),
+  };
+}
+
 export function breadcrumbListNode(
   items: Array<{ name: string; path: string }>
 ): JsonLdNode {
@@ -85,6 +105,7 @@ export function collectionPageNode(options: {
   name: string;
   description: string;
   photos: Photo[];
+  videos?: Video[];
 }): JsonLdNode {
   return {
     "@type": "CollectionPage",
@@ -93,7 +114,10 @@ export function collectionPageNode(options: {
     name: options.name,
     description: options.description,
     about: { "@id": PERSON_ID },
-    hasPart: options.photos.map((photo) => imageObjectNode(photo)),
+    hasPart: [
+      ...options.photos.map((photo) => imageObjectNode(photo)),
+      ...(options.videos ?? []).map((video) => videoObjectNode(video)),
+    ],
   };
 }
 
