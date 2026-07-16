@@ -47,6 +47,7 @@ export function profilePageNode(): JsonLdNode {
 
 export function imageObjectNode(photo: Photo): JsonLdNode {
   const url = `${SITE_URL}${photo.src}`;
+  const year = photo.date.slice(0, 4);
   return {
     "@type": "ImageObject",
     "@id": `${url}#image`,
@@ -61,6 +62,10 @@ export function imageObjectNode(photo: Photo): JsonLdNode {
     uploadDate: `${photo.date}T00:00:00.000Z`,
     creator: { "@id": PERSON_ID },
     copyrightHolder: { "@id": PERSON_ID },
+    creditText: PERSON_NAME_FULL,
+    copyrightNotice: `© ${year} ${PERSON_NAME_FULL}`,
+    license: `${SITE_URL}/copyright`,
+    acquireLicensePage: `${SITE_URL}/copyright`,
     ...(photo.tags && photo.tags.length > 0 ? { keywords: photo.tags.join(", ") } : {}),
   };
 }
