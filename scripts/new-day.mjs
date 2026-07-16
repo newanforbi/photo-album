@@ -30,6 +30,7 @@ const template = {
       tags: [],
     },
   ],
+  videos: [],
 };
 
 fs.writeFileSync(
