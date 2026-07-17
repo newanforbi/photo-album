@@ -5,10 +5,26 @@ export const SITE_URL = (
 export const PERSON_NAME = "Brendan Ngwa Nforbi";
 export const PERSON_NAME_ALTERNATE = "Ngehsi Brendan Ngwa Nforbi";
 
-export const SITE_TITLE = `${PERSON_NAME} — Photography`;
+export const PERSON_TAGLINE =
+  "Gospel Singer-Songwriter, Public Speaker & Christian Author";
+
+// Shorter form of the tagline for <title>/OG contexts, which get truncated
+// by search engines and social platforms around ~60 characters.
+export const SITE_TAGLINE_SHORT = "Gospel Singer-Songwriter & Speaker";
+
+export const SITE_TITLE = `${PERSON_NAME} — ${SITE_TAGLINE_SHORT}`;
 export const SITE_DESCRIPTION =
-  `Personal photo album by ${PERSON_NAME} (also known as ${PERSON_NAME_ALTERNATE}), ` +
-  `documenting daily photography.`;
+  `${PERSON_NAME} (also known as ${PERSON_NAME_ALTERNATE}) is a Gospel ` +
+  `singer-songwriter, public speaker, and Christian author. Browse photos and music.`;
+
+// Home page bio copy — leads with the full legal name, then covers basic
+// history. Keep this short; it's the first thing a visitor and Googlebot see.
+export const BIO_PARAGRAPHS: string[] = [
+  `${PERSON_NAME_ALTERNATE} is a Gospel singer-songwriter, public speaker, ` +
+    `and Christian author who shares his faith through music, speaking, and writing.`,
+  `In 2014, he was named a Youth of the Year honoree by the Boys & Girls Clubs ` +
+    `of Silicon Valley, recognized for character, leadership, and service.`,
+];
 
 export const MUSIC_LINKS: Array<{ label: string; url: string }> = [
   { label: "SoundCloud", url: "https://soundcloud.com/brendanngwanforbi" },

@@ -5,10 +5,11 @@
 Personal photo album site for Brendan Ngwa Nforbi (also known as Ngehsi Brendan
 Ngwa Nforbi), built with Next.js and engineered for Google Search / Google Images
 discoverability: per-photo structured data (schema.org `Person` /
-`ImageObject`), an image sitemap, canonical URLs, and an About page tying it
-all to a single identity. A warm light/dark masonry gallery with a lightbox
-sits on top of that — see `app/photo/[date]/[slug]/page.tsx` for the
-canonical per-photo pages the SEO layer depends on.
+`ImageObject`), an image sitemap, canonical URLs, and a bio-first home page
+tying it all to a single identity (`/about` redirects here). A warm
+light/dark masonry gallery with a lightbox sits on top of that — see
+`app/photo/[date]/[slug]/page.tsx` for the canonical per-photo pages the SEO
+layer depends on.
 
 ## Getting started
 
@@ -44,5 +45,5 @@ in `.env.example`.
 
 - Verify the site in [Google Search Console](https://search.google.com/search-console) as a **Domain** property (`brendanngwanforbi.com`, verified via a Namecheap DNS TXT record) and submit `/sitemap.xml` and `/sitemap-images.xml`.
 - Confirm Vercel's Production deployment has no Deployment Protection enabled (it blocks Googlebot).
-- Use URL Inspection → "Request Indexing" on `/`, `/about`, and a few photo pages.
+- Use URL Inspection → "Request Indexing" on `/`, `/music`, and a few photo pages.
 - Validate structured data with [Google's Rich Results Test](https://search.google.com/test/rich-results).

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_TITLE,
     short_name: PERSON_NAME,
-    description: `Personal photo album of ${PERSON_NAME}.`,
+    description: `Official site of ${PERSON_NAME} — photos, music, and more.`,
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

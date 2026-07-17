@@ -1,41 +1,54 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
-import PhotoGrid from "@/components/PhotoGrid";
-import { getAllPhotosFlat } from "@/lib/photos";
-import { collectionPageNode, graph } from "@/lib/schema";
-import { PERSON_NAME, PERSON_NAME_ALTERNATE, SITE_URL } from "@/lib/site";
+import { getPhotoBySlug } from "@/lib/photos";
+import { graph, imageObjectNode, personNode, profilePageNode } from "@/lib/schema";
+import { BIO_PARAGRAPHS, PERSON_NAME_ALTERNATE } from "@/lib/site";
+import styles from "./page.module.css";
 
-const RECENT_COUNT = 12;
+const FEATURED_PHOTO_DATE = "2026-07-15";
+const FEATURED_PHOTO_SLUG = "another-look-at-the-waterfront";
+
+export const metadata: Metadata = {
+  description: `${PERSON_NAME_ALTERNATE} is a Gospel singer-songwriter, public speaker, and Christian author.`,
+};
 
 export default function HomePage() {
-  const photos = getAllPhotosFlat().slice(0, RECENT_COUNT);
+  const photo = getPhotoBySlug(FEATURED_PHOTO_DATE, FEATURED_PHOTO_SLUG);
 
   return (
     <>
       <JsonLd
         data={graph(
-          collectionPageNode({
-            id: `${SITE_URL}/#latest-photos`,
-            url: SITE_URL,
-            name: `Latest Photos by ${PERSON_NAME}`,
-            description: `Recent photography from ${PERSON_NAME}.`,
-            photos,
-          })
+          personNode(),
+          profilePageNode(photo),
+          ...(photo ? [imageObjectNode(photo)] : [])
         )}
       />
-      <h1>{PERSON_NAME}</h1>
-      <p>
-        Welcome — this is the personal photo album of {PERSON_NAME}, also
-        known as {PERSON_NAME_ALTERNATE}. New photographs are added daily; browse
-        the <Link href="/album">full album archive</Link> or read more{" "}
-        <Link href="/about">about {PERSON_NAME}</Link>.
-      </p>
-      <h2>Latest Photos</h2>
-      {photos.length > 0 ? (
-        <PhotoGrid photos={photos} />
-      ) : (
-        <p>No photos have been published yet — check back soon.</p>
+      <h1>About</h1>
+      <p>{BIO_PARAGRAPHS[0]}</p>
+      {photo && photo.width > 0 && photo.height > 0 && (
+        <Link href={`/photo/${photo.date}/${photo.slug}`} className={styles.figureLink}>
+          <div className={styles.figure}>
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              className={styles.image}
+              priority
+            />
+          </div>
+        </Link>
       )}
+      {BIO_PARAGRAPHS.slice(1).map((paragraph, i) => (
+        <p key={i}>{paragraph}</p>
+      ))}
+      <p>
+        Browse the <Link href="/album">full photo album</Link> or listen to{" "}
+        <Link href="/music">music</Link>.
+      </p>
     </>
   );
 }
