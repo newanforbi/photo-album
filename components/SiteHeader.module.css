@@ -1,16 +1,23 @@
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--color-border);
+  background: light-dark(rgba(250, 246, 241, 0.85), rgba(28, 24, 21, 0.85));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .brand {
+  font-family: var(--font-serif);
   font-weight: 600;
   text-decoration: none;
-  color: inherit;
-  font-size: 1.05rem;
+  color: var(--color-text);
+  font-size: 1.1rem;
 }
 
 .nav {
@@ -20,10 +27,15 @@
 
 .nav a {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-text);
   font-size: 0.95rem;
 }
 
 .nav a:hover {
-  text-decoration: underline;
+  color: var(--color-accent);
+}
+
+.nav a.active {
+  color: var(--color-accent);
+  font-weight: 600;
 }

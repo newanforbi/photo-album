@@ -1,9 +1,9 @@
 .footer {
   padding: 2rem 1.5rem;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--color-border);
   margin-top: 3rem;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--color-text-muted);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
+import PrevNextNav from "@/components/PrevNextNav";
+import TagList from "@/components/TagList";
 import {
   getAdjacentPhoto,
   getAllPhotosFlat,
@@ -10,6 +12,7 @@ import {
 } from "@/lib/photos";
 import { breadcrumbListNode, graph, imageObjectNode } from "@/lib/schema";
 import { PERSON_NAME_FULL, SITE_URL } from "@/lib/site";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return getAllPhotosFlat().map((photo) => ({
@@ -73,49 +76,42 @@ export default async function PhotoPage({
         )}
       />
       <p>
-        <Link href={`/album/${photo.date}`}>&larr; {photo.date}</Link>
+        <Link href={`/album/${photo.date}`} className={styles.back}>
+          &larr; {photo.date}
+        </Link>
       </p>
       <h1>{photo.title}</h1>
-      {photo.width > 0 && photo.height > 0 ? (
-        <Image
-          src={photo.src}
-          alt={photo.alt}
-          width={photo.width}
-          height={photo.height}
-          style={{ width: "100%", height: "auto" }}
-          priority
-        />
-      ) : (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={photo.src} alt={photo.alt} style={{ width: "100%", height: "auto" }} />
-      )}
-      <p>{photo.caption}</p>
-      <p>
+      <div className={styles.figure}>
+        {photo.width > 0 && photo.height > 0 ? (
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            className={styles.image}
+            priority
+          />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={photo.src} alt={photo.alt} className={styles.image} />
+        )}
+      </div>
+      <p className={styles.caption}>{photo.caption}</p>
+      <p className={styles.meta}>
         Photographed by <strong>{PERSON_NAME_FULL}</strong> on {photo.date}.
       </p>
       {photo.tags && photo.tags.length > 0 && (
-        <p>
-          Tags:{" "}
-          {photo.tags.map((tag, i) => (
-            <span key={tag}>
-              {tag}
-              {i < photo.tags!.length - 1 ? ", " : ""}
-            </span>
-          ))}
-        </p>
+        <>
+          <p className={styles.tagsHeading}>Tags</p>
+          <TagList tags={photo.tags} />
+        </>
       )}
-      <nav style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
-        {prev ? (
-          <Link href={`/photo/${prev.date}/${prev.slug}`}>&larr; {prev.title}</Link>
-        ) : (
-          <span />
-        )}
-        {next ? (
-          <Link href={`/photo/${next.date}/${next.slug}`}>{next.title} &rarr;</Link>
-        ) : (
-          <span />
-        )}
-      </nav>
+      <PrevNextNav
+        prevHref={prev ? `/photo/${prev.date}/${prev.slug}` : undefined}
+        prevLabel={<>&larr; {prev?.title}</>}
+        nextHref={next ? `/photo/${next.date}/${next.slug}` : undefined}
+        nextLabel={<>{next?.title} &rarr;</>}
+      />
     </>
   );
 }
