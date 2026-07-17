@@ -10,9 +10,15 @@ export const SITE_DESCRIPTION =
   `Personal photo album by ${PERSON_NAME} (also known as ${PERSON_NAME_ALTERNATE}), ` +
   `documenting daily photography.`;
 
-// Populate with real profile URLs (LinkedIn, Instagram, X, etc.) when available.
-// Each entry should also get a matching rel="me" link in the About page footer.
-export const SAME_AS_LINKS: string[] = [];
+export const MUSIC_LINKS: Array<{ label: string; url: string }> = [
+  { label: "SoundCloud", url: "https://soundcloud.com/brendanngwanforbi" },
+  { label: "Bandcamp", url: "https://brendanngwanforbi.bandcamp.com" },
+  { label: "YouTube", url: "https://www.youtube.com/@brendanngwanforbi" },
+];
+
+// Profile URLs for the same identity across the web — each also gets a
+// matching rel="me" link in the site footer.
+export const SAME_AS_LINKS: string[] = MUSIC_LINKS.map((link) => link.url);
 
 export interface PressMention {
   url: string;
