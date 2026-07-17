@@ -32,13 +32,6 @@ export default function SiteHeader() {
         >
           Music
         </Link>
-        <Link
-          href="/about"
-          className={isActive(pathname, "/about") ? styles.active : undefined}
-          aria-current={isActive(pathname, "/about") ? "page" : undefined}
-        >
-          About
-        </Link>
       </nav>
     </header>
   );

@@ -10,6 +10,18 @@ export const SITE_DESCRIPTION =
   `Personal photo album by ${PERSON_NAME} (also known as ${PERSON_NAME_ALTERNATE}), ` +
   `documenting daily photography.`;
 
+export const PERSON_TAGLINE =
+  "Gospel Singer-Songwriter, Public Speaker & Christian Author";
+
+// Home page bio copy — leads with the full legal name, then covers basic
+// history. Keep this short; it's the first thing a visitor and Googlebot see.
+export const BIO_PARAGRAPHS: string[] = [
+  `${PERSON_NAME_ALTERNATE} is a Gospel singer-songwriter, public speaker, ` +
+    `and Christian author who shares his faith through music, speaking, and writing.`,
+  `In 2014, he was named a Youth of the Year honoree by the Boys & Girls Clubs ` +
+    `of Silicon Valley, recognized for character, leadership, and service.`,
+];
+
 export const MUSIC_LINKS: Array<{ label: string; url: string }> = [
   { label: "SoundCloud", url: "https://soundcloud.com/brendanngwanforbi" },
   { label: "Bandcamp", url: "https://brendanngwanforbi.bandcamp.com" },

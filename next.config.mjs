@@ -21,6 +21,11 @@ const nextConfig = {
         destination: "/photos/2017-02-26/mirror-selfie-jersey.jpg",
         permanent: true,
       },
+      {
+        source: "/about",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };

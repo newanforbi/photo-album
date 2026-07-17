@@ -2,6 +2,7 @@ import {
   PERSON_ID,
   PERSON_NAME,
   PERSON_NAME_ALTERNATE,
+  PERSON_TAGLINE,
   PRESS_MENTIONS,
   SAME_AS_LINKS,
   SITE_DESCRIPTION,
@@ -20,7 +21,7 @@ export function personNode(): JsonLdNode {
     name: PERSON_NAME,
     alternateName: PERSON_NAME_ALTERNATE,
     url: SITE_URL,
-    jobTitle: "Photographer",
+    jobTitle: PERSON_TAGLINE,
     ...(SAME_AS_LINKS.length > 0 ? { sameAs: SAME_AS_LINKS } : {}),
     ...(PRESS_MENTIONS.length > 0
       ? {
@@ -47,13 +48,16 @@ export function websiteNode(): JsonLdNode {
   };
 }
 
-export function profilePageNode(): JsonLdNode {
+export function profilePageNode(photo?: Photo): JsonLdNode {
   return {
     "@type": "ProfilePage",
-    "@id": `${SITE_URL}/about#webpage`,
-    url: `${SITE_URL}/about`,
+    "@id": `${SITE_URL}/#profile`,
+    url: SITE_URL,
     name: `About ${PERSON_NAME}`,
     mainEntity: { "@id": PERSON_ID },
+    ...(photo
+      ? { primaryImageOfPage: { "@id": `${SITE_URL}${photo.src}#image` } }
+      : {}),
   };
 }
 
