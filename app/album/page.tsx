@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllDates, getDayData } from "@/lib/photos";
-import { PERSON_NAME_FULL } from "@/lib/site";
+import { PERSON_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Album Archive",
-  description: `Full chronological archive of photos by ${PERSON_NAME_FULL}.`,
+  description: `Full chronological archive of photos by ${PERSON_NAME}.`,
   alternates: { canonical: "/album" },
 };
 
@@ -16,7 +16,7 @@ export default function AlbumIndexPage() {
     <>
       <h1>Album Archive</h1>
       <p>
-        Every day of photography by {PERSON_NAME_FULL}, newest first.
+        Every day of photography by {PERSON_NAME}, newest first.
       </p>
       {dates.length === 0 ? (
         <p>No albums have been published yet — check back soon.</p>

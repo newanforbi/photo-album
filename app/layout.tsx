@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s | Ngehsi Brendan Ngwa Nforbi",
+    template: "%s | Brendan Ngwa Nforbi",
   },
   description: SITE_DESCRIPTION,
   openGraph: {

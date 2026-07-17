@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { PERSON_NAME_FULL } from "@/lib/site";
+import { PERSON_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Copyright & Licensing",
-  description: `Copyright and licensing information for photos and videos on this site, owned by ${PERSON_NAME_FULL}.`,
+  description: `Copyright and licensing information for photos and videos on this site, owned by ${PERSON_NAME}.`,
   alternates: { canonical: "/copyright" },
 };
 
@@ -12,7 +12,7 @@ export default function CopyrightPage() {
     <>
       <h1>Copyright &amp; Licensing</h1>
       <p>
-        All photos on this site are &copy; {PERSON_NAME_FULL}, all rights
+        All photos on this site are &copy; {PERSON_NAME}, all rights
         reserved, unless otherwise noted. No license is granted for reuse,
         reproduction, or redistribution of these images without prior
         written permission from the copyright holder.

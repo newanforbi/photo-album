@@ -7,7 +7,7 @@ import PrevNextNav from "@/components/PrevNextNav";
 import VideoGrid from "@/components/VideoGrid";
 import { getAdjacentDates, getAllDates, getDayData } from "@/lib/photos";
 import { collectionPageNode, graph } from "@/lib/schema";
-import { PERSON_NAME_FULL, SITE_URL } from "@/lib/site";
+import { PERSON_NAME, SITE_URL } from "@/lib/site";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -29,7 +29,7 @@ export async function generateMetadata({
       : "Photos";
   return {
     title: `${day.dayTitle} — ${day.date}`,
-    description: `${kind} from ${day.date} by ${PERSON_NAME_FULL}: ${day.dayTitle}.`,
+    description: `${kind} from ${day.date} by ${PERSON_NAME}: ${day.dayTitle}.`,
     alternates: { canonical: `/album/${day.date}` },
   };
 }
@@ -53,7 +53,7 @@ export default async function AlbumDayPage({
             id: `${SITE_URL}/album/${day.date}#collection`,
             url: `${SITE_URL}/album/${day.date}`,
             name: `${day.dayTitle} — ${day.date}`,
-            description: `Photos from ${day.date} by ${PERSON_NAME_FULL}.`,
+            description: `Photos from ${day.date} by ${PERSON_NAME}.`,
             photos: day.photos,
             videos: day.videos,
           })

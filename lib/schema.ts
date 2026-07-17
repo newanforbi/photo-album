@@ -1,7 +1,7 @@
 import {
   PERSON_ID,
-  PERSON_NAME_FULL,
-  PERSON_NAME_SHORT,
+  PERSON_NAME,
+  PERSON_NAME_ALTERNATE,
   PRESS_MENTIONS,
   SAME_AS_LINKS,
   SITE_DESCRIPTION,
@@ -17,8 +17,8 @@ export function personNode(): JsonLdNode {
   return {
     "@type": "Person",
     "@id": PERSON_ID,
-    name: PERSON_NAME_FULL,
-    alternateName: PERSON_NAME_SHORT,
+    name: PERSON_NAME,
+    alternateName: PERSON_NAME_ALTERNATE,
     url: SITE_URL,
     jobTitle: "Photographer",
     ...(SAME_AS_LINKS.length > 0 ? { sameAs: SAME_AS_LINKS } : {}),
@@ -52,7 +52,7 @@ export function profilePageNode(): JsonLdNode {
     "@type": "ProfilePage",
     "@id": `${SITE_URL}/about#webpage`,
     url: `${SITE_URL}/about`,
-    name: `About ${PERSON_NAME_FULL}`,
+    name: `About ${PERSON_NAME}`,
     mainEntity: { "@id": PERSON_ID },
   };
 }
@@ -74,8 +74,8 @@ export function imageObjectNode(photo: Photo): JsonLdNode {
     uploadDate: `${photo.date}T00:00:00.000Z`,
     creator: { "@id": PERSON_ID },
     copyrightHolder: { "@id": PERSON_ID },
-    creditText: PERSON_NAME_FULL,
-    copyrightNotice: `© ${year} ${PERSON_NAME_FULL}`,
+    creditText: PERSON_NAME,
+    copyrightNotice: `© ${year} ${PERSON_NAME}`,
     license: `${SITE_URL}/copyright`,
     acquireLicensePage: `${SITE_URL}/copyright`,
     ...(photo.tags && photo.tags.length > 0 ? { keywords: photo.tags.join(", ") } : {}),

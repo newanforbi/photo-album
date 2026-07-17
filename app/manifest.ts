@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { PERSON_NAME_FULL, SITE_TITLE } from "@/lib/site";
+import { PERSON_NAME, SITE_TITLE } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_TITLE,
-    short_name: PERSON_NAME_FULL,
-    description: `Personal photo album of ${PERSON_NAME_FULL}.`,
+    short_name: PERSON_NAME,
+    description: `Personal photo album of ${PERSON_NAME}.`,
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

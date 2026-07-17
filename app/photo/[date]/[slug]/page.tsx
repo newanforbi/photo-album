@@ -11,7 +11,7 @@ import {
   getPhotoBySlug,
 } from "@/lib/photos";
 import { breadcrumbListNode, graph, imageObjectNode } from "@/lib/schema";
-import { PERSON_NAME_FULL, SITE_URL } from "@/lib/site";
+import { PERSON_NAME, SITE_URL } from "@/lib/site";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -98,7 +98,7 @@ export default async function PhotoPage({
       </div>
       <p className={styles.caption}>{photo.caption}</p>
       <p className={styles.meta}>
-        Photographed by <strong>{PERSON_NAME_FULL}</strong> on {photo.date}.
+        Photographed by <strong>{PERSON_NAME}</strong> on {photo.date}.
       </p>
       {photo.tags && photo.tags.length > 0 && (
         <>

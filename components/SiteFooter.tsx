@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { PERSON_NAME_FULL, PERSON_NAME_SHORT, SAME_AS_LINKS } from "@/lib/site";
+import { PERSON_NAME, PERSON_NAME_ALTERNATE, SAME_AS_LINKS } from "@/lib/site";
 import styles from "./SiteFooter.module.css";
 
 export default function SiteFooter() {
   return (
     <footer className={styles.footer}>
       <p>
-        &copy; {new Date().getFullYear()} {PERSON_NAME_FULL} ({PERSON_NAME_SHORT})
+        &copy; {new Date().getFullYear()} {PERSON_NAME} ({PERSON_NAME_ALTERNATE})
         {" — "}
         <Link href="/copyright">Copyright &amp; Licensing</Link>
       </p>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PERSON_NAME_FULL } from "@/lib/site";
+import { PERSON_NAME } from "@/lib/site";
 import styles from "./SiteHeader.module.css";
 
 function isActive(pathname: string, href: string) {
@@ -15,7 +15,7 @@ export default function SiteHeader() {
   return (
     <header className={styles.header}>
       <Link href="/" className={styles.brand}>
-        {PERSON_NAME_FULL}
+        {PERSON_NAME}
       </Link>
       <nav className={styles.nav}>
         <Link

@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { PERSON_NAME_FULL } from "@/lib/site";
+import { PERSON_NAME } from "@/lib/site";
 
 export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
@@ -22,7 +22,7 @@ export default function OpengraphImage() {
           fontWeight: 600,
         }}
       >
-        {PERSON_NAME_FULL}
+        {PERSON_NAME}
         <div style={{ fontSize: 32, fontWeight: 400, marginTop: 20, color: "#ccc" }}>
           Photography
         </div>
