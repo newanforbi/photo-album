@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Video } from "@/lib/photos";
-import styles from "./PhotoGrid.module.css";
+import styles from "./VideoGrid.module.css";
 
 export default function VideoGrid({ videos }: { videos: Video[] }) {
   return (

@@ -3,10 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import PhotoGrid from "@/components/PhotoGrid";
+import PrevNextNav from "@/components/PrevNextNav";
 import VideoGrid from "@/components/VideoGrid";
 import { getAdjacentDates, getAllDates, getDayData } from "@/lib/photos";
 import { collectionPageNode, graph } from "@/lib/schema";
 import { PERSON_NAME_FULL, SITE_URL } from "@/lib/site";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return getAllDates().map((date) => ({ date }));
@@ -58,10 +60,12 @@ export default async function AlbumDayPage({
         )}
       />
       <p>
-        <Link href="/album">&larr; Album Archive</Link>
+        <Link href="/album" className={styles.back}>
+          &larr; Album Archive
+        </Link>
       </p>
       <h1>{day.dayTitle}</h1>
-      <p>{day.date}</p>
+      <p className={styles.date}>{day.date}</p>
       {day.photos.length > 0 && <PhotoGrid photos={day.photos} />}
       {day.videos.length > 0 && (
         <>
@@ -69,10 +73,12 @@ export default async function AlbumDayPage({
           <VideoGrid videos={day.videos} />
         </>
       )}
-      <nav style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
-        {prev ? <Link href={`/album/${prev}`}>&larr; Older day</Link> : <span />}
-        {next ? <Link href={`/album/${next}`}>Newer day &rarr;</Link> : <span />}
-      </nav>
+      <PrevNextNav
+        prevHref={prev ? `/album/${prev}` : undefined}
+        prevLabel="← Older day"
+        nextHref={next ? `/album/${next}` : undefined}
+        nextLabel="Newer day →"
+      />
     </>
   );
 }
