@@ -71,6 +71,6 @@ images into.
 - `tags`: optional, short list of topical keywords.
 - Each video gets its own page with a thumbnail and a "Watch on YouTube"
   link (not an embedded player), plus structured data that ties the video to
-  Ngehsi Brendan Ngwa Nforbi as the subject — this is what's meant to help a
+  Brendan Ngwa Nforbi as the subject — this is what's meant to help a
   name search surface these videos, since the video itself is hosted on
   YouTube's own domain, not this site.

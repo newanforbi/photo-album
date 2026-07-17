@@ -2,8 +2,8 @@
 
 **Live at [brendanngwanforbi.com](https://brendanngwanforbi.com)**
 
-Personal photo album site for Ngehsi Brendan Ngwa Nforbi (Brendan Ngwa Nforbi),
-built with Next.js and engineered for Google Search / Google Images
+Personal photo album site for Brendan Ngwa Nforbi (also known as Ngehsi Brendan
+Ngwa Nforbi), built with Next.js and engineered for Google Search / Google Images
 discoverability: per-photo structured data (schema.org `Person` /
 `ImageObject`), an image sitemap, canonical URLs, and an About page tying it
 all to a single identity. A warm light/dark masonry gallery with a lightbox

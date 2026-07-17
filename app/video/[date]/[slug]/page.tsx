@@ -8,7 +8,7 @@ import {
   getVideoBySlug,
 } from "@/lib/photos";
 import { breadcrumbListNode, graph, videoObjectNode } from "@/lib/schema";
-import { PERSON_NAME_FULL } from "@/lib/site";
+import { PERSON_NAME } from "@/lib/site";
 
 export function generateStaticParams() {
   return getAllVideosFlat().map((video) => ({
@@ -89,7 +89,7 @@ export default async function VideoPage({
       </p>
       <p>{video.description}</p>
       <p>
-        Featuring <strong>{PERSON_NAME_FULL}</strong>, from {video.date}.
+        Featuring <strong>{PERSON_NAME}</strong>, from {video.date}.
       </p>
       {video.tags && video.tags.length > 0 && (
         <p>
