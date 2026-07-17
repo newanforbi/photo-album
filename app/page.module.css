@@ -1,5 +1,12 @@
+.hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
 .figureLink {
   display: block;
+  flex: 0 0 auto;
 }
 
 .figure {
@@ -7,11 +14,27 @@
   border-radius: 12px;
   overflow: hidden;
   background: var(--color-surface);
-  max-width: 480px;
+  width: 320px;
 }
 
 .image {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .figure {
+    width: 100%;
+    max-width: 480px;
+  }
 }

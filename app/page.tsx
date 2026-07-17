@@ -26,29 +26,33 @@ export default function HomePage() {
           ...(photo ? [imageObjectNode(photo)] : [])
         )}
       />
-      <h1>About</h1>
-      <p>{BIO_PARAGRAPHS[0]}</p>
-      {photo && photo.width > 0 && photo.height > 0 && (
-        <Link href={`/photo/${photo.date}/${photo.slug}`} className={styles.figureLink}>
-          <div className={styles.figure}>
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              width={photo.width}
-              height={photo.height}
-              className={styles.image}
-              priority
-            />
-          </div>
-        </Link>
-      )}
-      {BIO_PARAGRAPHS.slice(1).map((paragraph, i) => (
-        <p key={i}>{paragraph}</p>
-      ))}
-      <p>
-        Browse the <Link href="/album">full photo album</Link> or listen to{" "}
-        <Link href="/music">music</Link>.
-      </p>
+      <div className={styles.hero}>
+        {photo && photo.width > 0 && photo.height > 0 && (
+          <Link href={`/photo/${photo.date}/${photo.slug}`} className={styles.figureLink}>
+            <div className={styles.figure}>
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                className={styles.image}
+                priority
+              />
+            </div>
+          </Link>
+        )}
+        <div className={styles.content}>
+          <h1>About</h1>
+          <p>{BIO_PARAGRAPHS[0]}</p>
+          {BIO_PARAGRAPHS.slice(1).map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+          <p>
+            Browse the <Link href="/album">full photo album</Link> or listen to{" "}
+            <Link href="/music">music</Link>.
+          </p>
+        </div>
+      </div>
     </>
   );
 }
