@@ -2,6 +2,7 @@ import {
   PERSON_ID,
   PERSON_NAME_FULL,
   PERSON_NAME_SHORT,
+  PRESS_MENTIONS,
   SAME_AS_LINKS,
   SITE_DESCRIPTION,
   SITE_TITLE,
@@ -21,6 +22,17 @@ export function personNode(): JsonLdNode {
     url: SITE_URL,
     jobTitle: "Photographer",
     ...(SAME_AS_LINKS.length > 0 ? { sameAs: SAME_AS_LINKS } : {}),
+    ...(PRESS_MENTIONS.length > 0
+      ? {
+          subjectOf: PRESS_MENTIONS.map((mention) => ({
+            "@type": "NewsArticle",
+            url: mention.url,
+            headline: mention.headline,
+            datePublished: mention.datePublished,
+            publisher: { "@type": "Organization", name: mention.publication },
+          })),
+        }
+      : {}),
   };
 }
 
