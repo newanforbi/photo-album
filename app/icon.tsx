@@ -13,14 +13,14 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#1a1a1a",
-          color: "#fff",
-          fontSize: 20,
-          fontWeight: 700,
-          borderRadius: 6,
+          background: "#0b0a09",
+          color: "#c9a36a",
+          fontSize: 16,
+          fontWeight: 600,
+          letterSpacing: 0.5,
         }}
       >
-        N
+        B
       </div>
     ),
     { ...size }

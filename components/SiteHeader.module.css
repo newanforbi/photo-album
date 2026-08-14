@@ -1,34 +1,69 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 40;
+  height: var(--header-height);
+  border-bottom: 1px solid var(--color-hairline);
+  background: color-mix(in srgb, var(--color-bg) 78%, transparent);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.inner {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  background: light-dark(rgba(250, 246, 241, 0.85), rgba(28, 24, 21, 0.85));
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  gap: 1rem;
 }
 
 .brand {
-  font-family: var(--font-serif);
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
-  color: var(--color-text);
-  font-size: 1.1rem;
+  color: inherit;
+  min-width: 0;
+}
+
+.brandMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  flex: 0 0 auto;
+}
+
+.brandName {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav {
   display: flex;
-  gap: 1.25rem;
+  gap: 0.25rem;
 }
 
 .nav a {
+  position: relative;
   text-decoration: none;
-  color: var(--color-text);
-  font-size: 0.95rem;
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.7rem;
 }
 
 .nav a:hover {
@@ -37,5 +72,24 @@
 
 .nav a.active {
   color: var(--color-accent);
-  font-weight: 600;
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: 0.15rem;
+  height: 1px;
+  background: currentColor;
+}
+
+@media (max-width: 640px) {
+  .brandName {
+    display: none;
+  }
+
+  .nav a {
+    padding-inline: 0.5rem;
+  }
 }

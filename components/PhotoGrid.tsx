@@ -48,8 +48,10 @@ export default function PhotoGrid({ photos }: { photos: Photo[] }) {
               // eslint-disable-next-line @next/next/no-img-element
               <img src={photo.src} alt={photo.alt} className={styles.image} />
             )}
+            <div className={styles.overlay}>
+              <p className={styles.caption}>{photo.title}</p>
+            </div>
           </div>
-          <p className={styles.caption}>{photo.title}</p>
         </Link>
       ))}
       {openIndex !== null && (

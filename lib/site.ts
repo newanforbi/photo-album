@@ -3,7 +3,6 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const PERSON_NAME = "Brendan Ngwa Nforbi";
-export const PERSON_NAME_ALTERNATE = "Ngehsi Brendan Ngwa Nforbi";
 
 export const PERSON_TAGLINE =
   "Gospel Singer-Songwriter, Public Speaker & Christian Author";
@@ -14,22 +13,34 @@ export const SITE_TAGLINE_SHORT = "Gospel Singer-Songwriter & Speaker";
 
 export const SITE_TITLE = `${PERSON_NAME} — ${SITE_TAGLINE_SHORT}`;
 export const SITE_DESCRIPTION =
-  `${PERSON_NAME} (also known as ${PERSON_NAME_ALTERNATE}) is a Gospel ` +
-  `singer-songwriter, public speaker, and Christian author. Browse photos and music.`;
+  `${PERSON_NAME} is a Gospel singer-songwriter, public speaker, and ` +
+  `Christian author. Browse the photo album and listen to music.`;
 
 // Home page bio copy — leads with the full legal name, then covers basic
 // history. Keep this short; it's the first thing a visitor and Googlebot see.
 export const BIO_PARAGRAPHS: string[] = [
-  `${PERSON_NAME_ALTERNATE} is a Gospel singer-songwriter, public speaker, ` +
+  `${PERSON_NAME} is a Gospel singer-songwriter, public speaker, ` +
     `and Christian author who shares his faith through music, speaking, and writing.`,
   `In 2014, he was named a Youth of the Year honoree by the Boys & Girls Clubs ` +
     `of Silicon Valley, recognized for character, leadership, and service.`,
 ];
 
-export const MUSIC_LINKS: Array<{ label: string; url: string }> = [
-  { label: "SoundCloud", url: "https://soundcloud.com/brendanngwanforbi" },
-  { label: "Bandcamp", url: "https://brendanngwanforbi.bandcamp.com" },
-  { label: "YouTube", url: "https://www.youtube.com/@brendanngwanforbi" },
+export const MUSIC_LINKS: Array<{ label: string; url: string; blurb: string }> = [
+  {
+    label: "SoundCloud",
+    url: "https://soundcloud.com/brendanngwanforbi",
+    blurb: "Streams, sessions, and new work as it lands.",
+  },
+  {
+    label: "Bandcamp",
+    url: "https://brendanngwanforbi.bandcamp.com",
+    blurb: "Releases you can take home.",
+  },
+  {
+    label: "YouTube",
+    url: "https://www.youtube.com/@brendanngwanforbi",
+    blurb: "Performances, speaking, and video.",
+  },
 ];
 
 // Profile URLs for the same identity across the web — each also gets a
@@ -44,7 +55,7 @@ export interface PressMention {
 }
 
 // Real, independent press coverage that names PERSON_NAME — surfaced on
-// the About page and in the Person structured data (`subjectOf`) to help
+// the home page and in the Person structured data (`subjectOf`) to help
 // search engines associate the name with these articles. Add more here as
 // working links turn up.
 export const PRESS_MENTIONS: PressMention[] = [

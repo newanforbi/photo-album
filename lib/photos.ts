@@ -119,6 +119,10 @@ function loadAllDays(): Day[] {
   return days;
 }
 
+export function getAllDays(): Day[] {
+  return loadAllDays();
+}
+
 export function getAllDates(): string[] {
   return loadAllDays().map((day) => day.date);
 }

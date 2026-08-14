@@ -1,0 +1,8 @@
+.page {
+  max-width: 42rem;
+  color: var(--color-text-muted);
+}
+
+.page p {
+  margin-bottom: 1rem;
+}

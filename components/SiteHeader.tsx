@@ -6,33 +6,42 @@ import { PERSON_NAME } from "@/lib/site";
 import styles from "./SiteHeader.module.css";
 
 function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
+
+const LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/album", label: "Album" },
+  { href: "/music", label: "Music" },
+];
 
 export default function SiteHeader() {
   const pathname = usePathname();
 
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.brand}>
-        {PERSON_NAME}
-      </Link>
-      <nav className={styles.nav}>
-        <Link
-          href="/album"
-          className={isActive(pathname, "/album") ? styles.active : undefined}
-          aria-current={isActive(pathname, "/album") ? "page" : undefined}
-        >
-          Album
+      <div className={`container ${styles.inner}`}>
+        <Link href="/" className={styles.brand}>
+          <span className={styles.brandMark}>BN</span>
+          <span className={styles.brandName}>{PERSON_NAME}</span>
         </Link>
-        <Link
-          href="/music"
-          className={isActive(pathname, "/music") ? styles.active : undefined}
-          aria-current={isActive(pathname, "/music") ? "page" : undefined}
-        >
-          Music
-        </Link>
-      </nav>
+        <nav className={styles.nav} aria-label="Primary">
+          {LINKS.map((link) => {
+            const active = isActive(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={active ? styles.active : undefined}
+                aria-current={active ? "page" : undefined}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </header>
   );
 }

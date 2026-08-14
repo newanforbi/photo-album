@@ -5,6 +5,7 @@ import JsonLd from "@/components/JsonLd";
 import PhotoGrid from "@/components/PhotoGrid";
 import PrevNextNav from "@/components/PrevNextNav";
 import VideoGrid from "@/components/VideoGrid";
+import { formatDisplayDate } from "@/lib/dates";
 import { getAdjacentDates, getAllDates, getDayData } from "@/lib/photos";
 import { collectionPageNode, graph } from "@/lib/schema";
 import { PERSON_NAME, SITE_URL } from "@/lib/site";
@@ -46,7 +47,7 @@ export default async function AlbumDayPage({
   const { prev, next } = getAdjacentDates(day.date);
 
   return (
-    <>
+    <div className="container">
       <JsonLd
         data={graph(
           collectionPageNode({
@@ -59,26 +60,26 @@ export default async function AlbumDayPage({
           })
         )}
       />
-      <p>
+      <p className={styles.backRow}>
         <Link href="/album" className={styles.back}>
-          &larr; Album Archive
+          Album
         </Link>
       </p>
+      <p className="eyebrow">{formatDisplayDate(day.date)}</p>
       <h1>{day.dayTitle}</h1>
-      <p className={styles.date}>{day.date}</p>
       {day.photos.length > 0 && <PhotoGrid photos={day.photos} />}
       {day.videos.length > 0 && (
-        <>
+        <section className={styles.videos}>
           <h2>Videos</h2>
           <VideoGrid videos={day.videos} />
-        </>
+        </section>
       )}
       <PrevNextNav
         prevHref={prev ? `/album/${prev}` : undefined}
-        prevLabel="← Older day"
+        prevLabel="Older day"
         nextHref={next ? `/album/${next}` : undefined}
-        nextLabel="Newer day →"
+        nextLabel="Newer day"
       />
-    </>
+    </div>
   );
 }

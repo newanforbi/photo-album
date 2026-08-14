@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import PrevNextNav from "@/components/PrevNextNav";
 import TagList from "@/components/TagList";
+import { formatDisplayDate } from "@/lib/dates";
 import {
   getAdjacentPhoto,
   getAllPhotosFlat,
@@ -63,7 +64,7 @@ export default async function PhotoPage({
   const { prev, next } = getAdjacentPhoto(photo.date, photo.slug);
 
   return (
-    <>
+    <div className={`container ${styles.page}`}>
       <JsonLd
         data={graph(
           imageObjectNode(photo),
@@ -75,13 +76,13 @@ export default async function PhotoPage({
           ])
         )}
       />
-      <p>
+      <p className={styles.backRow}>
         <Link href={`/album/${photo.date}`} className={styles.back}>
-          &larr; {photo.date}
+          {formatDisplayDate(photo.date)}
         </Link>
       </p>
       <h1>{photo.title}</h1>
-      <div className={styles.figure}>
+      <figure className={styles.figure}>
         {photo.width > 0 && photo.height > 0 ? (
           <Image
             src={photo.src}
@@ -95,23 +96,23 @@ export default async function PhotoPage({
           // eslint-disable-next-line @next/next/no-img-element
           <img src={photo.src} alt={photo.alt} className={styles.image} />
         )}
-      </div>
+      </figure>
       <p className={styles.caption}>{photo.caption}</p>
       <p className={styles.meta}>
-        Photographed by <strong>{PERSON_NAME}</strong> on {photo.date}.
+        Photographed by <strong>{PERSON_NAME}</strong> on {formatDisplayDate(photo.date)}.
       </p>
       {photo.tags && photo.tags.length > 0 && (
-        <>
+        <div className={styles.tags}>
           <p className={styles.tagsHeading}>Tags</p>
           <TagList tags={photo.tags} />
-        </>
+        </div>
       )}
       <PrevNextNav
         prevHref={prev ? `/photo/${prev.date}/${prev.slug}` : undefined}
-        prevLabel={<>&larr; {prev?.title}</>}
+        prevLabel={prev?.title}
         nextHref={next ? `/photo/${next.date}/${next.slug}` : undefined}
-        nextLabel={<>{next?.title} &rarr;</>}
+        nextLabel={next?.title}
       />
-    </>
+    </div>
   );
 }

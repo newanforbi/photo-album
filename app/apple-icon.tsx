@@ -13,13 +13,13 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#1a1a1a",
-          color: "#fff",
-          fontSize: 96,
-          fontWeight: 700,
+          background: "#0b0a09",
+          color: "#c9a36a",
+          fontSize: 92,
+          fontWeight: 500,
         }}
       >
-        N
+        B
       </div>
     ),
     { ...size }
