@@ -1,4 +1,33 @@
 {
-  "dayTitle": "Untitled day",
-  "photos": []
+  "dayTitle": "Department 11B",
+  "photos": [
+    {
+      "file": "courthouse-steps-portrait.jpg",
+      "title": "Flags at the Courthouse",
+      "caption": "Outside the civic complex, California and United States flags overhead, after a morning in Department 11B.",
+      "alt": "Man in a tan blazer over a black t-shirt standing outdoors in front of modern government buildings, with the California and United States flags on tall poles behind him.",
+      "tags": ["portrait", "courthouse"]
+    },
+    {
+      "file": "department-hallway-portrait.jpg",
+      "title": "Waiting by 11B",
+      "caption": "A pause in the eleventh-floor hallway beside the red Department 11B pillar, city light at the far windows.",
+      "alt": "Man in a tan blazer standing in a bright courthouse hallway next to a red pillar labeled 11B Department, with a long tiled corridor and city windows behind him.",
+      "tags": ["portrait", "courthouse"]
+    },
+    {
+      "file": "balcony-over-the-city.jpg",
+      "title": "Above the Street",
+      "caption": "Looking down from the high floor, tan suit against the grid of streets and rooftops below.",
+      "alt": "High-angle portrait of a man in a tan blazer, black t-shirt, tan trousers, and white sneakers standing by floor-to-ceiling windows overlooking a city street.",
+      "tags": ["portrait"]
+    },
+    {
+      "file": "eleventh-floor-cityscape.jpg",
+      "title": "The View from Eleven",
+      "caption": "The city stretching out from the eleventh floor, framed by the courthouse windows.",
+      "alt": "View from inside a modern building through floor-to-ceiling windows onto a sunlit cityscape, road, and trees under a blue sky.",
+      "tags": ["cityscape", "architecture"]
+    }
+  ]
 }

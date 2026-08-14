@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: rgba(10, 8, 6, 0.85);
+  background: rgba(8, 7, 6, 0.94);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,57 +14,80 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 100%;
+  width: min(1100px, 100%);
   max-height: 100%;
   outline: none;
 }
 
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 74vh;
+}
+
 .image {
   max-width: 100%;
-  max-height: 70vh;
+  max-height: 74vh;
   width: auto;
   height: auto;
-  border-radius: 8px;
   display: block;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
 .caption {
-  color: #f2ece4;
+  color: #f4efe8;
   text-align: center;
-  margin-top: 1rem;
-  max-width: 60ch;
+  margin-top: 1.15rem;
+  max-width: 48ch;
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.45rem;
+  font-weight: 500;
   margin: 0 0 0.35rem;
 }
 
 .captionText {
-  margin: 0 0 0.5rem;
-  color: #d8cfc5;
+  margin: 0 0 0.65rem;
+  color: #cfc6ba;
   font-size: 0.95rem;
 }
 
 .detailsLink {
-  color: #e08a5f;
-  font-size: 0.9rem;
+  color: #c9a36a;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.detailsLink:hover {
+  color: #e0c08a;
+}
+
+.close,
+.counter {
+  position: absolute;
+  top: -0.15rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #cfc6ba;
 }
 
 .close {
-  position: absolute;
-  top: -0.75rem;
-  right: -0.75rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: none;
-  background: #f2ece4;
-  color: #2b2420;
-  font-size: 1.25rem;
-  line-height: 1;
+  right: 0;
+  border: 0;
+  background: none;
   cursor: pointer;
+  padding: 0.35rem;
+}
+
+.counter {
+  left: 0;
+  margin: 0;
 }
 
 .prev,
@@ -72,13 +95,14 @@
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  width: 3rem;
-  height: 3rem;
+  width: 3.25rem;
+  height: 3.25rem;
   border-radius: 50%;
-  border: none;
-  background: rgba(242, 236, 228, 0.15);
-  color: #f2ece4;
-  font-size: 1.5rem;
+  border: 1px solid rgba(244, 239, 232, 0.18);
+  background: rgba(11, 10, 9, 0.35);
+  color: #f4efe8;
+  font-size: 1.8rem;
+  line-height: 1;
   cursor: pointer;
 }
 
@@ -93,12 +117,18 @@
 .prev:hover,
 .next:hover,
 .close:hover {
-  filter: brightness(1.1);
+  color: #c9a36a;
+  border-color: #c9a36a;
 }
 
 @media (max-width: 600px) {
-  .close {
-    top: 0.5rem;
-    right: 0.5rem;
+  .close,
+  .counter {
+    position: static;
+    margin-bottom: 0.75rem;
+  }
+
+  .dialog {
+    padding-top: 0.5rem;
   }
 }

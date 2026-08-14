@@ -1,7 +1,6 @@
 import {
   PERSON_ID,
   PERSON_NAME,
-  PERSON_NAME_ALTERNATE,
   PERSON_TAGLINE,
   PRESS_MENTIONS,
   SAME_AS_LINKS,
@@ -19,7 +18,6 @@ export function personNode(): JsonLdNode {
     "@type": "Person",
     "@id": PERSON_ID,
     name: PERSON_NAME,
-    alternateName: PERSON_NAME_ALTERNATE,
     url: SITE_URL,
     jobTitle: PERSON_TAGLINE,
     ...(SAME_AS_LINKS.length > 0 ? { sameAs: SAME_AS_LINKS } : {}),

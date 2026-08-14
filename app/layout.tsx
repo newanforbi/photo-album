@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -7,9 +7,17 @@ import { graph, personNode, websiteNode } from "@/lib/schema";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const display = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
+  display: "swap",
+});
+
+const sans = Outfit({
+  subsets: ["latin"],
+  variable: "--font-sans-face",
   display: "swap",
 });
 
@@ -43,11 +51,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={fraunces.variable}>
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>
+        <a className="skip-link" href="#content">
+          Skip to content
+        </a>
         <JsonLd data={graph(personNode(), websiteNode())} />
         <SiteHeader />
-        <main>{children}</main>
+        <main id="content">{children}</main>
         <SiteFooter />
       </body>
     </html>

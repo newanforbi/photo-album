@@ -1,6 +1,13 @@
+.backRow {
+  padding-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .back {
   color: var(--color-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   text-decoration: none;
 }
 
@@ -8,6 +15,6 @@
   color: var(--color-accent);
 }
 
-.date {
-  color: var(--color-text-muted);
+.videos {
+  margin-top: 3rem;
 }

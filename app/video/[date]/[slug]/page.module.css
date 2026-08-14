@@ -19,21 +19,21 @@
   color: var(--color-accent);
 }
 
-.figure {
+.thumbLink {
+  display: block;
   margin: 1.5rem 0 1.25rem;
   background: var(--color-surface);
 }
 
-.image {
+.thumb {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.caption {
+.description {
   font-size: 1.12rem;
-  color: var(--color-text);
-  max-width: 46rem;
+  margin-top: 1.5rem;
 }
 
 .meta {

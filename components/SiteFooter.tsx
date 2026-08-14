@@ -1,24 +1,41 @@
 import Link from "next/link";
-import { PERSON_NAME, PERSON_NAME_ALTERNATE, SAME_AS_LINKS } from "@/lib/site";
+import { MUSIC_LINKS, PERSON_NAME, PERSON_TAGLINE, SAME_AS_LINKS } from "@/lib/site";
 import styles from "./SiteFooter.module.css";
 
 export default function SiteFooter() {
   return (
     <footer className={styles.footer}>
-      <p>
-        &copy; {new Date().getFullYear()} {PERSON_NAME} ({PERSON_NAME_ALTERNATE})
-        {" — "}
-        <Link href="/copyright">Copyright &amp; Licensing</Link>
-      </p>
-      {SAME_AS_LINKS.length > 0 && (
-        <div className={styles.links}>
-          {SAME_AS_LINKS.map((href) => (
-            <a key={href} href={href} rel="me noopener noreferrer" target="_blank">
-              {new URL(href).hostname.replace(/^www\./, "")}
-            </a>
-          ))}
+      <div className={`container ${styles.grid}`}>
+        <div>
+          <p className={styles.brand}>{PERSON_NAME}</p>
+          <p className={styles.tagline}>{PERSON_TAGLINE}</p>
         </div>
-      )}
+        <nav className={styles.nav} aria-label="Footer">
+          <Link href="/">Home</Link>
+          <Link href="/album">Album</Link>
+          <Link href="/music">Music</Link>
+          <Link href="/copyright">Copyright</Link>
+        </nav>
+        {SAME_AS_LINKS.length > 0 && (
+          <div className={styles.links}>
+            {MUSIC_LINKS.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                rel="me noopener noreferrer"
+                target="_blank"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className={`container ${styles.legal}`}>
+        <p>
+          &copy; {new Date().getFullYear()} {PERSON_NAME}. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 }

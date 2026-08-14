@@ -64,22 +64,27 @@ export default function Lightbox({
           onClick={onClose}
           aria-label="Close"
         >
-          &times;
+          Close
         </button>
-        {photo.width > 0 && photo.height > 0 ? (
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            width={photo.width}
-            height={photo.height}
-            className={styles.image}
-            sizes="100vw"
-            priority
-          />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={photo.src} alt={photo.alt} className={styles.image} />
-        )}
+        <p className={styles.counter}>
+          {index + 1} / {photos.length}
+        </p>
+        <div className={styles.stage}>
+          {photo.width > 0 && photo.height > 0 ? (
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              className={styles.image}
+              sizes="100vw"
+              priority
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={photo.src} alt={photo.alt} className={styles.image} />
+          )}
+        </div>
         <div className={styles.caption}>
           <p className={styles.title}>{photo.title}</p>
           <p className={styles.captionText}>{photo.caption}</p>
@@ -87,7 +92,7 @@ export default function Lightbox({
             href={`/photo/${photo.date}/${photo.slug}`}
             className={styles.detailsLink}
           >
-            View full details &rarr;
+            Open photo page
           </Link>
         </div>
         {hasPrev && (
@@ -97,7 +102,7 @@ export default function Lightbox({
             onClick={onPrev}
             aria-label="Previous photo"
           >
-            &lsaquo;
+            ‹
           </button>
         )}
         {hasNext && (
@@ -107,7 +112,7 @@ export default function Lightbox({
             onClick={onNext}
             aria-label="Next photo"
           >
-            &rsaquo;
+            ›
           </button>
         )}
       </div>

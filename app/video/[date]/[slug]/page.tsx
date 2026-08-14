@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
+import PrevNextNav from "@/components/PrevNextNav";
+import TagList from "@/components/TagList";
+import { formatDisplayDate } from "@/lib/dates";
 import {
   getAdjacentVideo,
   getAllVideosFlat,
@@ -9,6 +12,7 @@ import {
 } from "@/lib/photos";
 import { breadcrumbListNode, graph, videoObjectNode } from "@/lib/schema";
 import { PERSON_NAME } from "@/lib/site";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return getAllVideosFlat().map((video) => ({
@@ -58,7 +62,7 @@ export default async function VideoPage({
   const { prev, next } = getAdjacentVideo(video.date, video.slug);
 
   return (
-    <>
+    <div className={`container ${styles.page}`}>
       <JsonLd
         data={graph(
           videoObjectNode(video),
@@ -70,50 +74,51 @@ export default async function VideoPage({
           ])
         )}
       />
-      <p>
-        <Link href={`/album/${video.date}`}>&larr; {video.date}</Link>
+      <p className={styles.backRow}>
+        <Link href={`/album/${video.date}`} className={styles.back}>
+          {formatDisplayDate(video.date)}
+        </Link>
       </p>
       <h1>{video.title}</h1>
-      <a href={video.watchUrl} target="_blank" rel="noopener noreferrer">
+      <a
+        href={video.watchUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.thumbLink}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={video.thumbnailUrl}
           alt={video.title}
-          style={{ width: "100%", height: "auto", display: "block" }}
+          className={styles.thumb}
         />
       </a>
       <p>
-        <a href={video.watchUrl} target="_blank" rel="noopener noreferrer">
-          &#9654; Watch on YouTube
+        <a
+          href={video.watchUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="button"
+        >
+          Watch on YouTube
         </a>
       </p>
-      <p>{video.description}</p>
-      <p>
-        Featuring <strong>{PERSON_NAME}</strong>, from {video.date}.
+      <p className={styles.description}>{video.description}</p>
+      <p className={styles.meta}>
+        Featuring <strong>{PERSON_NAME}</strong>, from {formatDisplayDate(video.date)}.
       </p>
       {video.tags && video.tags.length > 0 && (
-        <p>
-          Tags:{" "}
-          {video.tags.map((tag, i) => (
-            <span key={tag}>
-              {tag}
-              {i < video.tags!.length - 1 ? ", " : ""}
-            </span>
-          ))}
-        </p>
+        <div className={styles.tags}>
+          <p className={styles.tagsHeading}>Tags</p>
+          <TagList tags={video.tags} />
+        </div>
       )}
-      <nav style={{ display: "flex", justifyContent: "space-between", marginTop: "2rem" }}>
-        {prev ? (
-          <Link href={`/video/${prev.date}/${prev.slug}`}>&larr; {prev.title}</Link>
-        ) : (
-          <span />
-        )}
-        {next ? (
-          <Link href={`/video/${next.date}/${next.slug}`}>{next.title} &rarr;</Link>
-        ) : (
-          <span />
-        )}
-      </nav>
-    </>
+      <PrevNextNav
+        prevHref={prev ? `/video/${prev.date}/${prev.slug}` : undefined}
+        prevLabel={prev?.title}
+        nextHref={next ? `/video/${next.date}/${next.slug}` : undefined}
+        nextLabel={next?.title}
+      />
+    </div>
   );
 }

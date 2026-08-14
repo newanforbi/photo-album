@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: `Official site of ${PERSON_NAME} — photos, music, and more.`,
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#1a1a1a",
+    background_color: "#0b0a09",
+    theme_color: "#0b0a09",
     icons: [
       { src: "/icon.png", sizes: "512x512", type: "image/png" },
       { src: "/apple-icon.png", sizes: "180x180", type: "image/png" },
