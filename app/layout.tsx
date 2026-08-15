@@ -40,6 +40,19 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
+  // Site-wide de-indexing switch. Keep `allow: true` in app/robots.ts while
+  // this is on, so Google can still crawl and see this tag on already-indexed
+  // pages — that's what makes them drop out of the index. Flip robots.ts to
+  // Disallow only after Search Console confirms the URLs are gone. See
+  // README.md's "Taking this site down" section for the full runbook.
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
   ...(process.env.GOOGLE_SITE_VERIFICATION
     ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
     : {}),
