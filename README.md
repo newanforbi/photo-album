@@ -106,3 +106,27 @@ can linger in search for months.
 9. **Verify** a few weeks after full teardown: `site:brendanngwanforbi.com`
    in Google should return no results, and the domain should 404/refuse to
    connect for visitors.
+
+## Permanently removed URLs
+
+Some individual pages have been taken down for good, independently of the
+site-wide teardown above. The process for each:
+
+1. Delete its entry from the day's `content/photos/<date>/index.json` and
+   delete the image file from `public/photos/<date>/`. That drops the URL from
+   the day page, `/sitemap.xml`, and `/sitemap-images.xml` automatically.
+2. Add the page path *and* the image path to `GONE_PATHS` in `middleware.ts`,
+   so both answer `410 Gone` rather than a plain `404`. Google treats 410 as a
+   stronger, faster signal that content is never coming back. The image path
+   matters on its own — images get indexed in Google Images separately from
+   the pages that embed them.
+3. Leave the paths crawlable. `app/robots.ts` still allows `/`, and a crawler
+   has to be able to fetch a URL to see the 410 — blocking it in `robots.txt`
+   would strand the old entry in the index.
+4. In Search Console, run URL Inspection → "Request Indexing" on each removed
+   URL to pull the recrawl forward, and optionally file a Removals request as
+   a same-day stopgap. The Removals tool expires after ~6 months; the 410 is
+   what makes it permanent.
+
+Currently removed (2026-07-15): `suited-up-with-a-city-view` and
+`another-look-at-the-waterfront`, plus their two source images.
