@@ -116,10 +116,13 @@ site-wide teardown above. The process for each:
    delete the image file from `public/photos/<date>/`. That drops the URL from
    the day page, `/sitemap.xml`, and `/sitemap-images.xml` automatically.
 2. Add the page path *and* the image path to `GONE_PATHS` in `middleware.ts`,
-   so both answer `410 Gone` rather than a plain `404`. Google treats 410 as a
-   stronger, faster signal that content is never coming back. The image path
-   matters on its own — images get indexed in Google Images separately from
-   the pages that embed them.
+   so both answer `410 Gone` rather than a plain `404`. Matching is prefix-based
+   (`/opengraph-image` and similar subpaths included) and the body is a bare
+   HTML document with no site layout or JSON-LD, so view-source cannot still
+   expose an old `alternateName`. Google treats 410 as a stronger, faster
+   signal that content is never coming back. The image path matters on its
+   own — images get indexed in Google Images separately from the pages that
+   embed them.
 3. Leave the paths crawlable. `app/robots.ts` still allows `/`, and a crawler
    has to be able to fetch a URL to see the 410 — blocking it in `robots.txt`
    would strand the old entry in the index.
